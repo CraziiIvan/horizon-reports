@@ -2,7 +2,16 @@ import Image from "next/image";
 import { Button, LoginBtn } from "../ui/Button";
 import Link from "next/link";
 import SearchBar from "../ui/SearchBar";
-import { Cloud, List, Sun } from "@phosphor-icons/react/dist/ssr";
+import {
+  Cloud,
+  CloudLightning,
+  CloudRain,
+  CloudSun,
+  List,
+  Snowflake,
+  Sun,
+  Waves,
+} from "@phosphor-icons/react/dist/ssr";
 
 const months = [
   "January",
@@ -38,7 +47,12 @@ const date = currentDate.getDate();
 
 async function getWeatherData() {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=16.8409&lon=96.199379&units=metric&appid=28d643b869a136f535aedb13963224cb`
+    `https://api.openweathermap.org/data/2.5/weather?lat=16.8409&lon=96.199379&units=metric&appid=28d643b869a136f535aedb13963224cb`,
+    {
+      next: {
+        revalidate: 5,
+      },
+    }
   );
   const result = await response.json();
 
@@ -47,7 +61,23 @@ async function getWeatherData() {
 
 const weatherIcons = {
   "01d": <Sun size={22} />,
+  "02d": <CloudSun size={22} />,
+  "03d": <Cloud size={22} />,
   "04d": <Cloud size={22} />,
+  "09d": <CloudRain size={22} />,
+  "10d": <CloudRain size={22} />,
+  "11d": <CloudLightning size={22} />,
+  "13d": <Snowflake size={22} />,
+  "50d": <Waves size={22} />,
+  "01n": <Sun size={22} />,
+  "02n": <CloudSun size={22} />,
+  "03n": <Cloud size={22} />,
+  "04n": <Cloud size={22} />,
+  "09n": <CloudRain size={22} />,
+  "10n": <CloudRain size={22} />,
+  "11n": <CloudLightning size={22} />,
+  "13n": <Snowflake size={22} />,
+  "50n": <Waves size={22} />,
 };
 
 async function Header() {
