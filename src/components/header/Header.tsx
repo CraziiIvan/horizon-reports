@@ -5,6 +5,7 @@ import SearchBar from "../ui/SearchBar";
 import {
   Cloud,
   CloudLightning,
+  CloudMoon,
   CloudRain,
   CloudSun,
   List,
@@ -12,6 +13,7 @@ import {
   Sun,
   Waves,
 } from "@phosphor-icons/react/dist/ssr";
+import { NavBar } from "./NavBar";
 
 const months = [
   "January",
@@ -69,15 +71,15 @@ const weatherIcons = {
   "11d": <CloudLightning size={22} />,
   "13d": <Snowflake size={22} />,
   "50d": <Waves size={22} />,
-  "01n": <Sun size={22} />,
-  "02n": <CloudSun size={22} />,
-  "03n": <Cloud size={22} />,
-  "04n": <Cloud size={22} />,
-  "09n": <CloudRain size={22} />,
-  "10n": <CloudRain size={22} />,
-  "11n": <CloudLightning size={22} />,
-  "13n": <Snowflake size={22} />,
-  "50n": <Waves size={22} />,
+  "01n": <Sun weight="duotone" size={22} />,
+  "02n": <CloudMoon weight="duotone" size={22} />,
+  "03n": <Cloud weight="duotone" size={22} />,
+  "04n": <Cloud weight="duotone" size={22} />,
+  "09n": <CloudRain weight="duotone" size={22} />,
+  "10n": <CloudRain weight="duotone" size={22} />,
+  "11n": <CloudLightning weight="duotone" size={22} />,
+  "13n": <Snowflake weight="duotone" size={22} />,
+  "50n": <Waves weight="duotone" size={22} />,
 };
 
 async function Header() {
@@ -119,38 +121,11 @@ async function Header() {
           <SearchBar />
         </div>
       </div>
-      <NavBar />
+      <NavBar/>
     </header>
   );
 }
 
-function NavBar() {
-  return (
-    <div className="grid grid-cols-3 items-center h-12 px-5 border-t border-t-neutral-200 border-b-2 border-b-neutral-800">
-      <button className=" flex items-center gap-x-1 text-neutral-800 hover:text-neutral-900">
-        <List size={20} />
-        <span className="text-sm">More sections</span>
-      </button>
-      <nav className=" justify-self-center">
-        <ul className=" flex gap-x-10">
-          {["News", "Sports", "Politics", "Health", "Tech"].map((item) => {
-            return (
-              <Link href={"/"}>
-                <li className="text-sm text-neutral-500">{item}</li>
-              </Link>
-            );
-          })}
-        </ul>
-      </nav>
-      <button className=" justify-self-end flex items-center gap-x-2 text-neutral-800 hover:text-neutral-900">
-        <span className="text-sm">Watch Live</span>
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-        </span>
-      </button>
-    </div>
-  );
-}
+
 
 export default Header;
