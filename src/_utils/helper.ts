@@ -30,3 +30,9 @@ export function calculatePeriod(date: Date) {
       return addTimeLable("second", seconds)
     }
 }
+
+export function generateRouteName(blogTitle: string) {
+  const routeName = blogTitle.toLowerCase().replace(/\s+/g, '-');
+
+  return routeName;
+}
